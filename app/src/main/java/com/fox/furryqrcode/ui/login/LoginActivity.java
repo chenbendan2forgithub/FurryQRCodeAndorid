@@ -6,6 +6,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -26,12 +27,14 @@ import android.widget.Toast;
 import com.fox.furryqrcode.R;
 import com.fox.furryqrcode.ui.login.LoginViewModel;
 import com.fox.furryqrcode.ui.login.LoginViewModelFactory;
+import com.fox.furryqrcode.ui.register.RegisterActivity;
 
 import static android.view.Window.FEATURE_NO_TITLE;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+    private Activity RegisterActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,7 +123,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
-
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
             }
@@ -129,14 +131,13 @@ public class LoginActivity extends AppCompatActivity {
         regButton.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-
-                  loginViewModel.login(usernameEditText.getText().toString(),
-                          passwordEditText.getText().toString());
-                                         }
+                  startActivity(new Intent(com.fox.furryqrcode.ui.login.LoginActivity.this,com.fox.furryqrcode.ui.register.RegisterActivity.class));
+              }
                                      }
 
         );
     }
+
 
 
     private void updateUiWithUser(LoggedInUserView model) {

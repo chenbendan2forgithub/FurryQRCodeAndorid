@@ -7,10 +7,12 @@ public class LoggedInUser {
 
     private String userId;
     private String displayName;
+    private String base64Head;
 
-    public LoggedInUser(String userId, String displayName) {
+    public LoggedInUser(String userId, String displayName, String base64Head) {
         this.userId = userId;
         this.displayName = displayName;
+        this.base64Head = base64Head;
     }
 
     public String getUserId() {
@@ -19,5 +21,9 @@ public class LoggedInUser {
 
     public String getDisplayName() {
         return displayName;
+    }
+
+    public String getHead() {
+        return base64Head;
     }
 }
